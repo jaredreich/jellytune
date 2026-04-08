@@ -46,12 +46,7 @@ Please do not clone and redistribute on the App Store as a competitor, as this i
 
 <details>
 <summary>What is the difference between "Cached" and "Downloaded"?</summary>
-
-*Cached:*
-the song is available offline
-
-*Downloaded:* every song on the entire album is cached and protected from cache clearing
-
+Cached means the song is available offline, and Downloaded means every song on the entire album is cached and protected from cache clearing.
 </details>
 
 ### Localization
