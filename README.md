@@ -27,12 +27,12 @@
   - Cache clearing control (all, or by album)
   - Cache quality options (full or transcoded AAC)
 - Purist listening functionality
-  - You just play an album, and it keeps playing through the end, as the artist intended
+  - Album-focused, you just play an album or a song, and it plays through the rest of the songs in order, as the artist intended
 
 ### Purposeful non-features
 
-- Album-focused (no playlists, collections, genres, favourites, etc.)
 - No shuffle, repeat, queuing, etc.
+- No playlists, collections, genres, favourites, etc.
 
 ### Usage
 
