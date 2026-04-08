@@ -1,8 +1,17 @@
-logo_here
+<div align="center">
+  <img src=".github/icon-rounded.png" alt="Jellytune Icon" width="100">
 
-Jellytune - a purist Jellyfin music player for iOS. Your digital record player.
-
-download_link_here
+  <p>
+    <b>Jellytune</b> - a purist Jellyfin music player for iOS
+  </p>
+  
+  <a href="https://github.com/jaredreich/jellytune" target="_blank">
+    <img src=".github/testflight.png" alt="TestFlight Icon" height="40">
+  </a>
+  <!-- <a href="https://github.com/jaredreich/jellytune" target="_blank">
+    <img src=".github/app-store.svg" alt="App Store Icon" height="40">
+  </a> -->
+</div>
 
 ### Features
 
