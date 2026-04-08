@@ -622,12 +622,13 @@ class DownloadManager: NSObject, ObservableObject {
                     songs = metadataSongs
                 } else {
                     // No metadata available at all
-                    // TODO: handle this
+                    throw error
+                    // TODO: handle this better
                 }
             }
         }
 
-        // Universal sorting - ensures consistent order regardless of source
+        // Universal sorting, ensures consistent order regardless of source
         return songs.sortedByTrack()
     }
 
@@ -995,7 +996,7 @@ class AlbumStateCoordinator: ObservableObject {
         case "Latest Added":
             filtered = albums
         case "Recently Played":
-            // Preserve recency order - map album IDs to albums in order
+            // Preserve recency order, map album IDs to albums in order
             let albumsById = Dictionary(uniqueKeysWithValues: albums.map { ($0.id, $0) })
             filtered = recentlyPlayedAlbumIds.compactMap { albumsById[$0] }
         case "Offline":

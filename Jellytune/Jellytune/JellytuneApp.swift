@@ -9,7 +9,7 @@ struct JellytuneApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     init() {
-        // Request Siri authorization - critical for intents to work
+        // Request Siri authorization, critical for intents to work
         requestSiriAuthorization()
         // Donate a generic media playback intent to help iOS recognize the app
         donateMediaPlaybackIntent()

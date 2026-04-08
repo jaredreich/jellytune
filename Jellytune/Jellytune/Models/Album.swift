@@ -27,7 +27,7 @@ struct Album: Identifiable, Codable, Hashable {
         if artistComparison != .orderedSame {
             return artistComparison == .orderedAscending
         }
-        // Same artist - sort by year (oldest first)
+        // Same artist, sort by year (oldest first)
         // Albums without year go to the end
         let year1 = album1.year ?? Int.max
         let year2 = album2.year ?? Int.max

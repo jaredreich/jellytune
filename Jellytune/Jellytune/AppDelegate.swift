@@ -78,7 +78,7 @@ class MainAppPlayMediaHandler: NSObject, INPlayMediaIntentHandling {
             return
         }
 
-        // No resolved items - resolution must have failed
+        // No resolved items, resolution must have failed
         completion(INPlayMediaIntentResponse(code: .failure, userActivity: nil))
     }
 

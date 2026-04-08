@@ -371,7 +371,7 @@ class CarPlayTemplateManager: NSObject {
                 sections.append(discSection)
             }
         } else {
-            // Single disc - use normal setup
+            // Single disc, use normal setup
             let items = songs.enumerated().map { index, song -> CPListItem in
                 let item = CPListItem(
                     text: "\(index + 1). \(song.name)",
@@ -480,7 +480,7 @@ class CarPlayTemplateManager: NSObject {
         let currentAlbumId = audioPlayer.currentSong?.albumId
         let isPlaying = audioPlayer.isPlaying
 
-        // Update cloud accessory - show on currently loading song, hide on others
+        // Update cloud accessory, show on currently loading song, hide on others
         for (songId, item) in songItems {
             let isCurrentSong = (songId == currentSongId)
             item.isPlaying = (isCurrentSong && isPlaying)
