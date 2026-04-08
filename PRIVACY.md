@@ -1,0 +1,1 @@
+This application does not collect any data whatsoever. Any data transfer this application requires to function only occurs between the application itself and the Jellyfin server it is connected to.
