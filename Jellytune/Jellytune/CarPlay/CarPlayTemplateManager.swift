@@ -446,6 +446,7 @@ class CarPlayTemplateManager: NSObject {
 
         // Observe isPlaying state to navigate to Now Playing when playback actually starts
         playbackStateObserver = audioPlayer.$isPlaying
+            .receive(on: RunLoop.main)
             .sink { [weak self] isPlaying in
                 guard let self = self else { return }
 
@@ -470,6 +471,7 @@ class CarPlayTemplateManager: NSObject {
 
         // Observe current song changes to update playing state
         currentSongObserver = audioPlayer.$currentSong
+            .receive(on: RunLoop.main)
             .sink { [weak self] _ in
                 self?.updatePlayingState()
             }

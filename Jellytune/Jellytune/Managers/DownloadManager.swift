@@ -927,6 +927,7 @@ class AlbumStateCoordinator: ObservableObject {
 
         // Observe changes to pinned state (don't replace albums, just update offline set)
         downloadManager.$pinnedAlbums
+            .receive(on: RunLoop.main)
             .sink { [weak self] _ in
                 self?.updateOfflineAlbums()
             }
@@ -934,6 +935,7 @@ class AlbumStateCoordinator: ObservableObject {
 
         // Recompute offline albums when cached content changes (downloads complete or cache cleared)
         downloadManager.$cachedContentVersion
+            .receive(on: RunLoop.main)
             .sink { [weak self] _ in
                 self?.updateOfflineAlbums()
             }
