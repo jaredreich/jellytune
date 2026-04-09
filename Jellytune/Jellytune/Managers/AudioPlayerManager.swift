@@ -340,23 +340,20 @@ class AudioPlayerManager: NSObject, ObservableObject {
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
 
         if artworkChanged {
+            let songId = song.id
             Task {
-                await loadAndSetAlbumArt(for: song, localImageUrl: localImageUrl, nowPlayingInfo: nowPlayingInfo)
+                let image = await ImageCacheManager.shared.loadImage(
+                    localUrl: localImageUrl,
+                    remoteUrlString: song.imageUrl
+                )
+                guard self.currentSong?.id == songId, let image else { return }
+                let artwork = MPMediaItemArtwork(boundsSize: image.size) { _ in image }
+                // Re-read current info to avoid overwriting newer metadata
+                var latestInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
+                latestInfo[MPMediaItemPropertyArtwork] = artwork
+                MPNowPlayingInfoCenter.default().nowPlayingInfo = latestInfo
+                self.lastArtworkUrl = currentArtworkUrl
             }
-        }
-    }
-
-    private func loadAndSetAlbumArt(for song: Song, localImageUrl: URL?, nowPlayingInfo: [String: Any]) async {
-        let image = await ImageCacheManager.shared.loadImage(
-            localUrl: localImageUrl,
-            remoteUrlString: song.imageUrl
-        )
-        if let image = image {
-            var updatedInfo = nowPlayingInfo
-            let artwork = MPMediaItemArtwork(boundsSize: image.size) { _ in image }
-            updatedInfo[MPMediaItemPropertyArtwork] = artwork
-            MPNowPlayingInfoCenter.default().nowPlayingInfo = updatedInfo
-            lastArtworkUrl = localImageUrl?.absoluteString ?? song.imageUrl
         }
     }
 
