@@ -16,12 +16,25 @@ class AudioPlayerManager: NSObject, ObservableObject {
     @Published var duration: TimeInterval = 0
     @Published var currentSong: Song?
     @Published var recentlyPlayedAlbumIds: [String] = []
+    @Published var isEqualizerEnabled: Bool = false {
+        didSet {
+            UserDefaults.standard.set(isEqualizerEnabled, forKey: "isEqualizerEnabled")
+            applyCurrentGains()
+        }
+    }
+    @Published var selectedPreset: EqualizerPreset = .custom {
+        didSet { UserDefaults.standard.set(selectedPreset.id, forKey: "equalizerPresetId") }
+    }
+    @Published var equalizerGains: [Float] = EqualizerPreset.custom.gains {
+        didSet { saveEqualizerGains() }
+    }
 
     var queue: [Song] { playbackQueue.queue }
     var currentIndex: Int { playbackQueue.currentIndex }
     var hasNext: Bool { playbackQueue.hasNext }
 
     private let audioPlayer = AudioPlayer()
+    nonisolated(unsafe) private let equalizerNode = AVAudioUnitEQ(numberOfBands: 10)
     private var timeTracker: Timer?
     private var lastArtworkUrl: String?
     private var hasTriggeredPrefetch: Bool = false
@@ -32,7 +45,9 @@ class AudioPlayerManager: NSObject, ObservableObject {
         super.init()
         audioPlayer.delegate = self
         loadRecentlyPlayedAlbums()
+        loadEqualizerState()
         setupAudioSession()
+        setupEqualizer()
         setupRemoteTransportControls()
         setupInterruptionHandling()
         startTimeTracking()
@@ -43,6 +58,68 @@ class AudioPlayerManager: NSObject, ObservableObject {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {}
+    }
+
+    private func setupEqualizer() {
+        for (i, freq) in EqualizerPreset.bandFrequencies.enumerated() {
+            let band = equalizerNode.bands[i]
+            band.filterType = .parametric
+            band.frequency = freq
+            band.bandwidth = 1.0
+            band.bypass = false
+            band.gain = isEqualizerEnabled ? equalizerGains[i] : 0
+        }
+
+        let eq = equalizerNode
+        audioPlayer.modifyProcessingGraph { engine in
+            engine.attach(eq)
+            let format = self.audioPlayer.sourceNode.outputFormat(forBus: 0)
+            engine.connect(self.audioPlayer.sourceNode, to: eq, format: format)
+            engine.connect(eq, to: self.audioPlayer.mainMixerNode, format: format)
+        }
+    }
+
+    func setEqualizerBandGain(band: Int, gain: Float) {
+        guard band >= 0 && band < 10 else { return }
+        equalizerGains[band] = gain
+        if isEqualizerEnabled {
+            equalizerNode.bands[band].gain = gain
+        }
+    }
+
+    func applyPreset(_ preset: EqualizerPreset) {
+        selectedPreset = preset
+        equalizerGains = preset.gains
+        applyCurrentGains()
+    }
+
+    private func applyCurrentGains() {
+        for i in 0..<10 {
+            equalizerNode.bands[i].gain = isEqualizerEnabled ? equalizerGains[i] : 0
+        }
+    }
+
+    private func loadEqualizerState() {
+        isEqualizerEnabled = UserDefaults.standard.bool(forKey: "isEqualizerEnabled")
+        if let presetId = UserDefaults.standard.string(forKey: "equalizerPresetId"),
+           let preset = EqualizerPreset.allPresets.first(where: { $0.id == presetId }) {
+            selectedPreset = preset
+            if preset == .custom,
+               let data = UserDefaults.standard.data(forKey: "equalizerGains"),
+               let gains = try? JSONDecoder().decode([Float].self, from: data),
+               gains.count == 10 {
+                equalizerGains = gains
+            } else {
+                equalizerGains = preset.gains
+            }
+        }
+    }
+
+    private func saveEqualizerGains() {
+        guard selectedPreset == .custom else { return }
+        if let data = try? JSONEncoder().encode(equalizerGains) {
+            UserDefaults.standard.set(data, forKey: "equalizerGains")
+        }
     }
 
     private func makeDecoder(for url: URL) throws -> AudioDecoder {
@@ -183,7 +260,7 @@ class AudioPlayerManager: NSObject, ObservableObject {
 
                 if let time = self.audioPlayer.time {
                     if let current = time.current { self.currentTime = current }
-                    if let total = time.total { self.duration = total }
+                    if let total = time.total, total != self.duration { self.duration = total }
                 }
                 self.checkAndPrefetchNextSong()
             }
@@ -365,6 +442,11 @@ extension AudioPlayerManager: AudioPlayer.Delegate {
                 self.enqueueNextSong()
             }
         }
+    }
+
+    nonisolated func audioPlayer(_ audioPlayer: AudioPlayer, reconfigureProcessingGraph engine: AVAudioEngine, with format: AVAudioFormat) -> AVAudioNode {
+        engine.connect(equalizerNode, to: audioPlayer.mainMixerNode, format: format)
+        return equalizerNode
     }
 
     nonisolated func audioPlayerEndOfAudio(_ audioPlayer: AudioPlayer) {

@@ -41,6 +41,8 @@
 		FEF411992F520B4800B8ECE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF411982F520B4800B8ECE6 /* AppDelegate.swift */; };
 		FEF4119D2F520B4800B8ECE6 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4119C2F520B4800B8ECE6 /* SearchManager.swift */; };
 		FEF4119E2F520B4800B8ECE6 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4119C2F520B4800B8ECE6 /* SearchManager.swift */; };
+		FEFF61F62F8817AD004A3E8C /* EqualizerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF61F52F8817AD004A3E8C /* EqualizerSettingsView.swift */; };
+		FEFF61F82F8817D2004A3E8C /* EqualizerPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF61F72F8817D2004A3E8C /* EqualizerPreset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		FE9828D92F516F82007EA1BC /* AlbumMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumMetadata.swift; sourceTree = "<group>"; };
 		FEF411982F520B4800B8ECE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEF4119C2F520B4800B8ECE6 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		FEFF61F52F8817AD004A3E8C /* EqualizerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualizerSettingsView.swift; sourceTree = "<group>"; };
+		FEFF61F72F8817D2004A3E8C /* EqualizerPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualizerPreset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -179,6 +183,7 @@
 				AA0002000000000000000005 /* AuthState.swift */,
 				FE9828B42F5115F6007EA1BC /* FilterOption.swift */,
 				FE9828D92F516F82007EA1BC /* AlbumMetadata.swift */,
+				FEFF61F72F8817D2004A3E8C /* EqualizerPreset.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 				F7F8D37A7A0D400DA632CC13 /* StorageSettingsView.swift */,
 				112E85E72BDF4451BDCF9B9C /* AlbumArtView.swift */,
 				FE35D4BC2F7B202800382932 /* AppearanceSettingsView.swift */,
+				FEFF61F52F8817AD004A3E8C /* EqualizerSettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -354,8 +360,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEFF61F62F8817AD004A3E8C /* EqualizerSettingsView.swift in Sources */,
 				FEF411992F520B4800B8ECE6 /* AppDelegate.swift in Sources */,
 				FE9828DA2F516F82007EA1BC /* AlbumMetadata.swift in Sources */,
+				FEFF61F82F8817D2004A3E8C /* EqualizerPreset.swift in Sources */,
 				AA0001000000000000000001 /* JellytuneApp.swift in Sources */,
 				AA0001000000000000000002 /* ContentView.swift in Sources */,
 				AA0001000000000000000003 /* Album.swift in Sources */,

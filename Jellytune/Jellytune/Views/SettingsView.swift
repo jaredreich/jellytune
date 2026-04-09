@@ -46,6 +46,9 @@ struct SettingsView: View {
                     NavigationLink(destination: AppearanceSettingsView()) {
                         Text("settings.appearance.title")
                     }
+                    NavigationLink(destination: EqualizerSettingsView()) {
+                        Text("settings.equalizer.title")
+                    }
                     NavigationLink(destination: StorageSettingsView()) {
                         Text("settings.storage.title")
                     }
