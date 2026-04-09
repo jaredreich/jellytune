@@ -24,6 +24,12 @@ struct AlbumDetailView: View {
         }
     }
 
+    private var downloadProgress: Double {
+        guard !songs.isEmpty else { return 0 }
+        let cached = songs.filter { downloadManager.isCached(songId: $0.id) }.count
+        return Double(cached) / Double(songs.count)
+    }
+
     private var cachedSizeMB: Double {
         let totalBytes = songs.reduce(0) { total, song in
             guard downloadManager.isCached(songId: song.id),
@@ -192,8 +198,7 @@ struct AlbumDetailView: View {
                         showDownloadAlert = true
                     } label: {
                         if isDownloading {
-                            ProgressView()
-                                .progressViewStyle(.circular)
+                            CircularDownloadProgress(progress: downloadProgress)
                         } else if downloadManager.isPinned(albumId: album.id) {
                             Image(systemName: "arrow.down.circle.fill")
                                 .foregroundColor(.appAccent)
@@ -404,5 +409,22 @@ struct SongInfoContextMenu: View {
         } else {
             Text(verbatim: "\(String(localized: "general.cached")): ✗")
         }
+    }
+}
+
+private struct CircularDownloadProgress: View {
+    let progress: Double
+
+    var body: some View {
+        ZStack {
+            Circle()
+                .stroke(Color.secondary.opacity(0.3), lineWidth: 2.5)
+            Circle()
+                .trim(from: 0, to: progress)
+                .stroke(Color.appAccent, style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
+                .rotationEffect(.degrees(-90))
+                .animation(.linear(duration: 0.3), value: progress)
+        }
+        .frame(width: 20, height: 20)
     }
 }
