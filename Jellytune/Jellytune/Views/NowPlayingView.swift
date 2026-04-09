@@ -168,11 +168,11 @@ struct ScrubberView: View {
 
             ZStack(alignment: .leading) {
                 Capsule()
-                    .fill(Color.white.opacity(0.2))
+                    .fill(Color.primary.opacity(0.2))
                     .frame(height: currentTrackHeight)
 
                 Capsule()
-                    .fill(Color.white)
+                    .fill(Color.primary)
                     .frame(width: max(fillWidth, currentTrackHeight), height: currentTrackHeight)
             }
             .animation(.easeOut(duration: 0.15), value: isScrubbing)
