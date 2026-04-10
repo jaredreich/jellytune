@@ -89,8 +89,22 @@ class AudioPlayerManager: NSObject, ObservableObject {
 
     func applyPreset(_ preset: EqualizerPreset) {
         selectedPreset = preset
-        equalizerGains = preset.gains
+        if preset == .custom {
+            if let data = UserDefaults.standard.data(forKey: "equalizerGains"),
+               let saved = try? JSONDecoder().decode([Float].self, from: data),
+               saved.count == 10 {
+                equalizerGains = saved
+            }
+        } else {
+            equalizerGains = preset.gains
+        }
         applyCurrentGains()
+    }
+
+    func resetCustomEqualizer() {
+        equalizerGains = EqualizerPreset.custom.gains
+        applyCurrentGains()
+        saveEqualizerGains()
     }
 
     private func applyCurrentGains() {

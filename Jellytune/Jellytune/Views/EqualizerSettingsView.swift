@@ -30,13 +30,13 @@ struct EqualizerSettingsView: View {
                             }
                         }
                     ),
-                    isEnabled: audioPlayer.isEqualizerEnabled && audioPlayer.selectedPreset == .custom
+                    isEnabled: audioPlayer.selectedPreset == .custom
                 )
                 .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0))
                 // .transaction { $0.animation = nil }
 
                 Button("settings.equalizer.reset") {
-                    audioPlayer.applyPreset(.custom)
+                    audioPlayer.resetCustomEqualizer()
                 }
                 .foregroundColor(.red)
                 .disabled(audioPlayer.selectedPreset != .custom)
