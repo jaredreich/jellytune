@@ -205,6 +205,8 @@ struct LibraryView: View {
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView()
+                    .environmentObject(albumCoordinator)
+                    .environmentObject(JellyfinService.shared)
             }
         }
         .onAppear {

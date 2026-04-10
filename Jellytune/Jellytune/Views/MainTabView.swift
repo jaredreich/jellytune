@@ -15,6 +15,7 @@ struct MainTabView: View {
             .animation(.spring(response: 0.4, dampingFraction: 0.8), value: audioPlayer.currentSong != nil)
             .sheet(isPresented: $showNowPlaying) {
                 NowPlayingView(showNowPlaying: $showNowPlaying)
+                    .environmentObject(audioPlayer)
                     .presentationDragIndicator(.hidden)
                     .presentationDetents([.large])
                     .interactiveDismissDisabled(false)

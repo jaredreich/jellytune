@@ -2,7 +2,7 @@
   <img src="media/icon-rounded.png" alt="Jellytune Icon" width="100">
 
   <p>
-    <b>Jellytune</b>: an album-focused Jellyfin music player for iOS
+    <b>Jellytune</b>: an album-focused Jellyfin music player for iOS/iPadOS
   </p>
   
   <a href="https://testflight.apple.com/join/zkN4GgN1" target="_blank">
@@ -15,7 +15,7 @@
 
 ### Features
 
-- 100% iOS-native (Swift)
+- 100% native Swift, built for iOS/iPadOS (also works on macOS devices with Apple silicon)
 - Excellent CarPlay, Siri, and AirPlay support
 - Gapless playback
 - Equalizer (10-band)
