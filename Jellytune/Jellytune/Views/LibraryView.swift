@@ -108,6 +108,8 @@ struct LibraryView: View {
                                 moveRecentlyPlayedAlbum(from: source, to: destination)
                             }
                         } else {
+                            // Leave "Random Album" hidden for now (it's more of a CarPlay-only feature)
+                            /*
                             if selectedFilter == .library, searchText.isEmpty, !filteredAlbums.isEmpty {
                                 Button {
                                     randomAlbum = filteredAlbums.randomElement()
@@ -125,13 +127,13 @@ struct LibraryView: View {
                                                 )
                                             )
                                             .cornerRadius(8)
-
+                            
                                         Text("library.random_album")
                                             .font(.headline)
                                             .foregroundColor(.primary)
-
+                            
                                         Spacer()
-
+                            
                                         Image(systemName: "chevron.right")
                                             .font(.system(size: 14, weight: .semibold))
                                             .foregroundColor(Color(.tertiaryLabel))
@@ -147,6 +149,7 @@ struct LibraryView: View {
                                     .opacity(0)
                                 )
                             }
+                            */
                             ForEach(filteredAlbums) { album in
                                 NavigationLink(destination: AlbumDetailView(album: album)) {
                                     AlbumRowView(
