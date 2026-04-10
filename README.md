@@ -2,7 +2,7 @@
   <img src="media/icon-rounded.png" alt="Jellytune Icon" width="100">
 
   <p>
-    <b>Jellytune</b> - a purist Jellyfin music player for iOS
+    <b>Jellytune</b>: an album-focused Jellyfin music player for iOS
   </p>
   
   <a href="https://testflight.apple.com/join/zkN4GgN1" target="_blank">
@@ -15,7 +15,7 @@
 
 ### Features
 
-- Clean and minimal iOS-native design
+- 100% iOS-native (Swift)
 - Excellent CarPlay, Siri, and AirPlay support
 - Gapless playback
 - Equalizer (10-band)
@@ -27,8 +27,6 @@
   - Cache usage visibility (all, by album, and by song)
   - Cache clearing control (all, or by album)
   - Cache quality options (full or transcoded AAC)
-- Album-focused
-  - Just play an album or a song, and it plays through the rest of the songs in order, as the artist intended
 
 ### Purposeful non-features (for now)
 
@@ -37,7 +35,7 @@
 
 ### Usage
 
-To support development and get permanent lifetime access to the official build, it will be available for purchase (4.99 USD) on the App Store. There will never be in-app purchases or subscriptions to unlock anything.
+To support development and get full lifetime access to the official release, it will be available for purchase (4.99 USD) on the App Store. There will **never** be in-app purchases or subscriptions to unlock anything.
 
 To get the app for free, you are encouraged to clone and install on your own iOS device. You can also get it through the TestFlight open beta. Both of these are a great way to find and report bugs!
 
