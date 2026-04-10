@@ -15,8 +15,8 @@
 
 ### Features
 
-- Pure, minimal, and clean iOS-native design
-- Flawless CarPlay, Siri, and AirPlay support
+- Clean and minimal iOS-native design
+- Excellent CarPlay, Siri, and AirPlay support
 - Gapless playback
 - Equalizer (10-band)
 - Offline-focused, network-friendly
@@ -27,8 +27,8 @@
   - Cache usage visibility (all, by album, and by song)
   - Cache clearing control (all, or by album)
   - Cache quality options (full or transcoded AAC)
-- Purist listening functionality
-  - Album-focused, you just play an album or a song, and it plays through the rest of the songs in order, as the artist intended
+- Album-focused
+  - Just play an album or a song, and it plays through the rest of the songs in order, as the artist intended
 
 ### Purposeful non-features (for now)
 
