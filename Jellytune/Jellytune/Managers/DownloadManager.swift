@@ -201,6 +201,7 @@ class DownloadManager: NSObject, ObservableObject {
         // Download songs sequentially so they finish one at a time / in order
         Task {
             for song in songs {
+                guard self.downloadingAlbumIds.contains(album.id) else { break }
                 _ = try? await downloadSong(song, awaitCompletion: true)
             }
         }
@@ -212,7 +213,9 @@ class DownloadManager: NSObject, ObservableObject {
     }
 
     private func downloadAlbumArt(for album: Album) {
-        guard let imageUrlString = album.imageUrl,
+        let destinationUrl = getAlbumArtUrl(for: album.id)
+        guard !FileManager.default.fileExists(atPath: destinationUrl.path),
+              let imageUrlString = album.imageUrl,
               let imageUrl = URL(string: imageUrlString) else {
             return
         }
@@ -221,8 +224,6 @@ class DownloadManager: NSObject, ObservableObject {
             do {
                 print("Network Request: \(imageUrl.absoluteString)")
                 let (data, _) = try await URLSession.shared.data(from: imageUrl)
-                let destinationUrl = getAlbumArtUrl(for: album.id)
-
                 try data.write(to: destinationUrl)
             } catch {
                 // TODO: handle this
@@ -239,6 +240,16 @@ class DownloadManager: NSObject, ObservableObject {
         activeDownloads.removeValue(forKey: songId)
         downloadProgress.removeValue(forKey: songId)
         downloadingSongIds.remove(songId)
+    }
+
+    func cancelAlbumDownload(albumId: String) {
+        guard let pendingSongIds = pendingAlbumDownloads[albumId] else { return }
+        for songId in pendingSongIds where !cachedSongIds.contains(songId) {
+            cancelDownload(songId: songId)
+        }
+        pendingAlbumDownloads.removeValue(forKey: albumId)
+        downloadingAlbumIds.remove(albumId)
+        activeDownloadCount = activeDownloads.count
     }
 
     func deleteAlbum(albumId: String) {

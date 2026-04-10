@@ -193,20 +193,24 @@ struct AlbumDetailView: View {
                         Image(systemName: "arrow.down.circle")
                     }
                     .disabled(songs.isEmpty)
+                } else if isDownloading {
+                    Button {
+                        downloadManager.cancelAlbumDownload(albumId: album.id)
+                    } label: {
+                        CircularDownloadProgress(progress: downloadProgress)
+                    }
                 } else {
                     Button {
                         showDownloadAlert = true
                     } label: {
-                        if isDownloading {
-                            CircularDownloadProgress(progress: downloadProgress)
-                        } else if downloadManager.isPinned(albumId: album.id) {
+                        if downloadManager.isPinned(albumId: album.id) {
                             Image(systemName: "arrow.down.circle.fill")
                                 .foregroundColor(.appAccent)
                         } else {
                             Image(systemName: "arrow.down.circle")
                         }
                     }
-                    .disabled(songs.isEmpty || isDownloading)
+                    .disabled(songs.isEmpty)
                 }
             }
         }
