@@ -49,6 +49,8 @@
 	</array>
 	<key>NSSiriUsageDescription</key>
 	<string>Jellytune uses Siri to play music from your Jellyfin library</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
