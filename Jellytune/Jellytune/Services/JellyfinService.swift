@@ -101,7 +101,6 @@ class JellyfinService: ObservableObject {
         ]
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
 
-        print("Network Request: \(url.absoluteString)")
         let (data, response) = try await URLSession.shared.data(for: request)
 
         guard let httpResponse = response as? HTTPURLResponse else {
@@ -154,7 +153,6 @@ class JellyfinService: ObservableObject {
         }
 
         let request = createRequest(url: url, includeToken: true)
-        print("Network Request: \(url.absoluteString)")
         let (data, _) = try await URLSession.shared.data(for: request)
         let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
 
@@ -216,7 +214,6 @@ class JellyfinService: ObservableObject {
         }
 
         do {
-            print("Network Request: \(url.absoluteString)")
             let (data, _) = try await URLSession.shared.data(for: request)
             let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
 
@@ -283,7 +280,6 @@ class JellyfinService: ObservableObject {
 
         let request = createRequest(url: url, includeToken: true)
 
-        print("Network Request: \(url.absoluteString)")
         let (data, _) = try await URLSession.shared.data(for: request)
         let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
 

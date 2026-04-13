@@ -164,8 +164,6 @@ class DownloadManager: NSObject, ObservableObject {
             downloadingSongIds.insert(song.id)
         }
 
-        print("Network Request: \(assetUrl.absoluteString)")
-
         // If we need to await completion, use continuation
         if awaitCompletion {
             return try await withCheckedThrowingContinuation { continuation in
@@ -222,7 +220,6 @@ class DownloadManager: NSObject, ObservableObject {
 
         Task {
             do {
-                print("Network Request: \(imageUrl.absoluteString)")
                 let (data, _) = try await URLSession.shared.data(from: imageUrl)
                 try data.write(to: destinationUrl)
             } catch {
@@ -357,7 +354,6 @@ class DownloadManager: NSObject, ObservableObject {
         }
 
         do {
-            print("Network Request: \(imageUrl.absoluteString)")
             let (data, _) = try await URLSession.shared.data(from: imageUrl)
             try data.write(to: albumArtUrl)
         } catch {
@@ -841,7 +837,6 @@ class ImageCacheManager {
 
         // Download from network
         do {
-            print("Network Request: \(url.absoluteString)")
             let (data, _) = try await urlSession.data(from: url)
 
             guard let image = UIImage(data: data) else {
@@ -871,7 +866,6 @@ class ImageCacheManager {
         if let remoteUrlString = remoteUrlString,
            let remoteUrl = URL(string: remoteUrlString) {
             do {
-                print("Network Request: \(remoteUrl.absoluteString)")
                 let (data, _) = try await urlSession.data(from: remoteUrl)
 
                 guard let image = UIImage(data: data) else { return nil }
