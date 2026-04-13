@@ -8,9 +8,9 @@
   <a href="https://testflight.apple.com/join/zkN4GgN1" target="_blank">
     <img src="media/testflight.png" alt="TestFlight Icon" height="40">
   </a>
-  <!-- <a href="https://github.com/jaredreich/jellytune" target="_blank">
+  <a href="https://apps.apple.com/app/jellytune/id6759573783" target="_blank">
     <img src="media/app-store.svg" alt="App Store Icon" height="40">
-  </a> -->
+  </a>
 </div>
 
 ### Features
