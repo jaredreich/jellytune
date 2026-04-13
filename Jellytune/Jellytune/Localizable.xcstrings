@@ -1014,6 +1014,50 @@
         }
       }
     },
+    "settings.about.build" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build"
+          }
+        }
+      }
+    },
+    "settings.about.credits" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danksagung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crédits"
+          }
+        }
+      }
+    },
     "settings.about.header" : {
       "localizations" : {
         "de" : {
@@ -1344,28 +1388,6 @@
         }
       }
     },
-    "settings.equalizer.preset.custom" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Benutzerdefiniert"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Custom"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Personnalisé"
-          }
-        }
-      }
-    },
     "settings.equalizer.preset.bass_boost" : {
       "localizations" : {
         "de" : {
@@ -1384,6 +1406,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Renforcement des basses"
+          }
+        }
+      }
+    },
+    "settings.equalizer.preset.custom" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzerdefiniert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personnalisé"
           }
         }
       }
@@ -2355,6 +2399,9 @@
           }
         }
       }
+    },
+    "SFBAudioEngine" : {
+
     }
   },
   "version" : "1.0"

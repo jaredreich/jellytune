@@ -114,6 +114,15 @@ struct SettingsView: View {
                         Text(appVersion)
                             .foregroundColor(.secondary)
                     }
+                    HStack {
+                        Text("settings.about.build")
+                        Spacer()
+                        Text(appBuild)
+                            .foregroundColor(.secondary)
+                    }
+                    NavigationLink(destination: CreditsView()) {
+                        Text("settings.about.credits")
+                    }
                 }
             }
             .navigationTitle("settings.title")

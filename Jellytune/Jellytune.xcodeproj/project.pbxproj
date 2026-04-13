@@ -45,6 +45,7 @@
 		FEF4119E2F520B4800B8ECE6 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4119C2F520B4800B8ECE6 /* SearchManager.swift */; };
 		FEFF61F62F8817AD004A3E8C /* EqualizerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF61F52F8817AD004A3E8C /* EqualizerSettingsView.swift */; };
 		FEFF61F82F8817D2004A3E8C /* EqualizerPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF61F72F8817D2004A3E8C /* EqualizerPreset.swift */; };
+		FEFF621D2F8C6953004A3E8C /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF621C2F8C6953004A3E8C /* CreditsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		FEF4119C2F520B4800B8ECE6 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		FEFF61F52F8817AD004A3E8C /* EqualizerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualizerSettingsView.swift; sourceTree = "<group>"; };
 		FEFF61F72F8817D2004A3E8C /* EqualizerPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualizerPreset.swift; sourceTree = "<group>"; };
+		FEFF621C2F8C6953004A3E8C /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -226,6 +228,7 @@
 				112E85E72BDF4451BDCF9B9C /* AlbumArtView.swift */,
 				FE35D4BC2F7B202800382932 /* AppearanceSettingsView.swift */,
 				FEFF61F52F8817AD004A3E8C /* EqualizerSettingsView.swift */,
+				FEFF621C2F8C6953004A3E8C /* CreditsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEFF61F62F8817AD004A3E8C /* EqualizerSettingsView.swift in Sources */,
+				FEFF621D2F8C6953004A3E8C /* CreditsView.swift in Sources */,
 				FEF411992F520B4800B8ECE6 /* AppDelegate.swift in Sources */,
 				FE9828DA2F516F82007EA1BC /* AlbumMetadata.swift in Sources */,
 				FEFF61F82F8817D2004A3E8C /* EqualizerPreset.swift in Sources */,
