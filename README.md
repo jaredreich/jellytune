@@ -68,11 +68,15 @@ Cached means the song is available offline, and Downloaded means every song on t
 
 #### iPhone
 
-Coming soon...
+<img src="media/screenshots/ios/login.png" alt="Jellytune Icon" width="180">
+<img src="media/screenshots/ios/library.png" alt="Jellytune Icon" width="180">
+<img src="media/screenshots/ios/album.png" alt="Jellytune Icon" width="180">
+<img src="media/screenshots/ios/now-playing.png" alt="Jellytune Icon" width="180">
 
 #### iPad
 
-Coming soon...
+<img src="media/screenshots/ipados/library-and-album.png" alt="Jellytune Icon" width="360">
+<img src="media/screenshots/ipados/now-playing.png" alt="Jellytune Icon" width="360">
 
 #### CarPlay
 
