@@ -327,14 +327,12 @@ class JellyfinService: ObservableObject {
 
     func getAssetUrl(itemId: String) -> String? {
         guard let serverUrl = authState.serverUrl,
-              let _ = authState.accessToken else { return nil }
+              let token = authState.accessToken,
+              let encodedToken = token.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
 
-        if audioQuality == .original {
-            return "\(serverUrl)/Audio/\(itemId)/stream?static=true"
-        }
-
-        let bitrate = audioQuality.bitrate!
-        return "\(serverUrl)/Audio/\(itemId)/stream?audioCodec=aac&audioBitRate=\(bitrate)&container=m4a"
+        return audioQuality == .original
+            ? "\(serverUrl)/Audio/\(itemId)/stream?static=true&api_key=\(encodedToken)"
+            : "\(serverUrl)/Audio/\(itemId)/universal?audioCodec=aac&container=m4a&transcodingContainer=m4a&maxStreamingBitrate=\(audioQuality.bitrate!)&transcodingProtocol=http&api_key=\(encodedToken)"
     }
     
     func getAssetUrl(for song: Song) -> String? {
